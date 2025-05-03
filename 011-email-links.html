@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Email Links</title>
+  </head>
+  <body>
+    <h1>Email Links in HTML</h1>
+    
+    <h2>Basic Email Link</h2>
+    <p>
+      <a href="mailto:contact@example.com">Send Email</a>
+    </p>
+    <p>
+      Code: <code>&lt;a href="mailto:contact@example.com"&gt;Send Email&lt;/a&gt;</code>
+    </p>
+    
+    <h2>Email with Subject Line</h2>
+    <p>
+      <a href="mailto:contact@example.com?subject=Website%20Inquiry">
+        Email with Subject
+      </a>
+    </p>
+    <p>
+      Code: <code>&lt;a href="mailto:contact@example.com?subject=Website%20Inquiry"&gt;Email with Subject&lt;/a&gt;</code>
+    </p>
+    <p>
+      Note: The space in "Website Inquiry" is URL-encoded as %20
+    </p>
+    
+    <h2>Email with Subject and Body</h2>
+    <p>
+      <a href="mailto:contact@example.com?subject=Website%20Inquiry&body=Hello%2C%20I%20have%20a%20question.">
+        Email with Subject and Body
+      </a>
+    </p>
+    <p>
+      Code: <code>&lt;a href="mailto:contact@example.com?subject=Website%20Inquiry&body=Hello%2C%20I%20have%20a%20question."&gt;Email with Subject and Body&lt;/a&gt;</code>
+    </p>
+    <p>
+      URL encoding in the body: 
+      <ul>
+        <li>Space = %20</li>
+        <li>Comma = %2C</li>
+        <li>Line break = %0A</li>
+        <li>Question mark = %3F</li>
+        <li>And so on...</li>
+      </ul>
+    </p>
+    
+    <h2>Email with Multiple Recipients</h2>
+    <p>
+      <a href="mailto:primary@example.com,cc@example.com">
+        Email to Multiple Recipients
+      </a>
+    </p>
+    <p>
+      Code: <code>&lt;a href="mailto:primary@example.com,cc@example.com"&gt;Email to Multiple Recipients&lt;/a&gt;</code>
+    </p>
+    
+    <h2>Email with CC and BCC</h2>
+    <p>
+      <a href="mailto:primary@example.com?cc=cc@example.com&bcc=bcc@example.com">
+        Email with CC and BCC
+      </a>
+    </p>
+    <p>
+      Code: <code>&lt;a href="mailto:primary@example.com?cc=cc@example.com&bcc=bcc@example.com"&gt;Email with CC and BCC&lt;/a&gt;</code>
+    </p>
+    
+    <h2>Complete Email Example</h2>
+    <p>
+      <a href="mailto:info@example.com?cc=support@example.com&subject=Question%20about%20your%20product&body=Hello%2C%0A%0AI%20have%20a%20question%20about%20your%20product.%0A%0AThanks%2C%0AYour%20Name">
+        Contact Customer Support
+      </a>
+    </p>
+    <p>
+      This example includes:
+      <ul>
+        <li>Main recipient: info@example.com</li>
+        <li>CC recipient: support@example.com</li>
+        <li>Subject line: "Question about your product"</li>
+        <li>Body text with line breaks:
+          <pre>
+Hello,
+
+I have a question about your product.
+
+Thanks,
+Your Name</pre>
+        </li>
+      </ul>
+    </p>
+  </body>
+</html> 

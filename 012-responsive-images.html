@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Responsive Images</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .example {
+        margin: 30px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .code {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Responsive Images in HTML</h1>
+    
+    <div class="example">
+      <h2>Basic Responsive Image</h2>
+      <p>Using CSS to make images responsive (max-width: 100% and height: auto):</p>
+      <img src="https://placehold.co/800x400" alt="Basic responsive image" />
+      <div class="code">
+&lt;img src="image.jpg" alt="Description" /&gt;
+
+/* CSS */
+img {
+  max-width: 100%;
+  height: auto;
+}
+      </div>
+      <p>This approach ensures the image is never wider than its container or original size.</p>
+    </div>
+    
+    <div class="example">
+      <h2>Responsive Images with srcset (Different Sizes)</h2>
+      <p>Using the srcset attribute with width descriptors (w):</p>
+      <img 
+        srcset="https://placehold.co/400x200 400w,
+                https://placehold.co/800x400 800w,
+                https://placehold.co/1200x600 1200w"
+        sizes="(max-width: 600px) 400px,
+               (max-width: 1000px) 800px,
+               1200px"
+        src="https://placehold.co/800x400" 
+        alt="Responsive image with different sizes" 
+      />
+      <div class="code">
+&lt;img 
+  srcset="small.jpg 400w,
+          medium.jpg 800w,
+          large.jpg 1200w"
+  sizes="(max-width: 600px) 400px,
+         (max-width: 1000px) 800px,
+         1200px"
+  src="medium.jpg" 
+  alt="Responsive image example" 
+/&gt;
+      </div>
+      <p>
+        The browser will choose the appropriate image based on:
+        <ul>
+          <li>The viewport width</li>
+          <li>The device's pixel density</li>
+          <li>The sizes attribute conditions</li>
+        </ul>
+      </p>
+    </div>
+    
+    <div class="example">
+      <h2>Responsive Images with srcset (Different Densities)</h2>
+      <p>Using the srcset attribute with pixel density descriptors (x):</p>
+      <img 
+        srcset="https://placehold.co/400x200 1x,
+                https://placehold.co/800x400 2x"
+        src="https://placehold.co/400x200" 
+        alt="Responsive image for different screen densities" 
+      />
+      <div class="code">
+&lt;img 
+  srcset="image.jpg 1x,
+          image-2x.jpg 2x"
+  src="image.jpg" 
+  alt="Image for different screen densities" 
+/&gt;
+      </div>
+      <p>
+        This is especially useful for high-resolution displays (like Retina displays).
+        The browser will select the image based on the device's pixel ratio.
+      </p>
+    </div>
+    
+    <div class="example">
+      <h2>Art Direction with the picture Element</h2>
+      <p>Using the picture element to provide different images based on viewport:</p>
+      
+      <picture>
+        <source media="(min-width: 800px)" srcset="https://placehold.co/800x400/ff9900/000000?text=Desktop+Image" />
+        <source media="(min-width: 600px)" srcset="https://placehold.co/600x400/cc6600/ffffff?text=Tablet+Image" />
+        <img src="https://placehold.co/400x400/993300/ffffff?text=Mobile+Image" alt="Art direction example" />
+      </picture>
+      
+      <div class="code">
+&lt;picture&gt;
+  &lt;source media="(min-width: 800px)" srcset="desktop.jpg" /&gt;
+  &lt;source media="(min-width: 600px)" srcset="tablet.jpg" /&gt;
+  &lt;img src="mobile.jpg" alt="Art direction example" /&gt;
+&lt;/picture&gt;
+      </div>
+      <p>
+        The picture element allows you to specify different images for different viewport sizes.
+        This is not just about resolution, but about actually showing different compositions or 
+        aspect ratios based on screen size.
+      </p>
+    </div>
+    
+    <div class="example">
+      <h2>Image Format Fallbacks</h2>
+      <p>Using the picture element to provide modern formats with fallbacks:</p>
+      
+      <picture>
+        <source type="image/webp" srcset="https://placehold.co/800x400.webp" />
+        <source type="image/jpeg" srcset="https://placehold.co/800x400.jpg" />
+        <img src="https://placehold.co/800x400.jpg" alt="Format fallback example" />
+      </picture>
+      
+      <div class="code">
+&lt;picture&gt;
+  &lt;source type="image/webp" srcset="image.webp" /&gt;
+  &lt;source type="image/jpeg" srcset="image.jpg" /&gt;
+  &lt;img src="image.jpg" alt="Format fallback example" /&gt;
+&lt;/picture&gt;
+      </div>
+      <p>
+        This approach allows you to serve modern, efficient formats like WebP to browsers 
+        that support them, while providing JPEG fallbacks for older browsers.
+      </p>
+    </div>
+  </body>
+</html> 

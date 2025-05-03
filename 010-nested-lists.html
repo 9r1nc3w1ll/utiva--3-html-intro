@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Nested Lists</title>
+  </head>
+  <body>
+    <h1>Nested Lists in HTML</h1>
+    
+    <h2>Nested Unordered Lists</h2>
+    <ul>
+      <li>
+        Fruits
+        <ul>
+          <li>Apples</li>
+          <li>Bananas</li>
+          <li>Oranges
+            <ul>
+              <li>Navel oranges</li>
+              <li>Blood oranges</li>
+              <li>Valencia oranges</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Vegetables
+        <ul>
+          <li>Carrots</li>
+          <li>Broccoli</li>
+          <li>Spinach</li>
+        </ul>
+      </li>
+    </ul>
+    
+    <h2>Nested Ordered Lists</h2>
+    <ol>
+      <li>
+        Main Course
+        <ol type="a">
+          <li>Steak</li>
+          <li>Fish</li>
+          <li>Vegetarian Options
+            <ol type="i">
+              <li>Pasta</li>
+              <li>Stir-fry</li>
+              <li>Curry</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>
+        Dessert
+        <ol type="a">
+          <li>Ice cream</li>
+          <li>Cake</li>
+          <li>Fruit salad</li>
+        </ol>
+      </li>
+    </ol>
+    
+    <h2>Mixed Nested Lists</h2>
+    <ol>
+      <li>
+        HTML Basics
+        <ul>
+          <li>Document structure</li>
+          <li>Tags and elements</li>
+          <li>Attributes</li>
+        </ul>
+      </li>
+      <li>
+        CSS Basics
+        <ul>
+          <li>Selectors</li>
+          <li>Properties
+            <ol type="a">
+              <li>Color properties</li>
+              <li>Text properties</li>
+              <li>Box model properties</li>
+            </ol>
+          </li>
+          <li>Values</li>
+        </ul>
+      </li>
+    </ol>
+    
+    <h2>Definition Lists with Nested Lists</h2>
+    <dl>
+      <dt>Front-end Development</dt>
+      <dd>
+        The practice of developing user interfaces for websites or applications.
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </dd>
+      
+      <dt>Back-end Development</dt>
+      <dd>
+        Server-side development focusing on databases, scripting, and architecture.
+        <ul>
+          <li>Node.js</li>
+          <li>Python</li>
+          <li>PHP</li>
+          <li>Databases
+            <ul>
+              <li>MySQL</li>
+              <li>MongoDB</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </body>
+</html> 

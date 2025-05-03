@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Images</title>
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .image-example {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Images in HTML</h1>
+      
+      <h2>Basic Image Syntax</h2>
+      <div class="image-example">
+        <img src="https://placehold.co/300x200" alt="A placeholder image" />
+        <p>
+          <code>&lt;img src="image.jpg" alt="Description of image" /&gt;</code>
+        </p>
+        <ul>
+          <li><strong>src</strong> - Specifies the path to the image</li>
+          <li><strong>alt</strong> - Provides text description (for accessibility and if image fails to load)</li>
+        </ul>
+      </div>
+      
+      <h2>Image Attributes</h2>
+      <div class="image-example">
+        <img 
+          src="https://placehold.co/600x400" 
+          alt="A sample landscape" 
+          width="400" 
+          height="200"
+          title="Landscape photo example"
+        />
+        <p>
+          This image has width, height, and title attributes. Hover over the image to see the title tooltip.
+        </p>
+      </div>
+      
+      <h2>Image Formats</h2>
+      <table>
+        <tr>
+          <th>Format</th>
+          <th>Best For</th>
+          <th>Features</th>
+        </tr>
+        <tr>
+          <td>JPEG (.jpg, .jpeg)</td>
+          <td>Photos and complex images</td>
+          <td>
+            <ul>
+              <li>Millions of colors</li>
+              <li>Lossy compression</li>
+              <li>No transparency</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>PNG (.png)</td>
+          <td>Images with transparency, logos, text</td>
+          <td>
+            <ul>
+              <li>Lossless compression</li>
+              <li>Supports transparency</li>
+              <li>Good for screenshots and graphics</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>GIF (.gif)</td>
+          <td>Simple animations, icons</td>
+          <td>
+            <ul>
+              <li>Limited to 256 colors</li>
+              <li>Supports animation</li>
+              <li>Supports transparency (binary only)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>SVG (.svg)</td>
+          <td>Logos, icons, illustrations</td>
+          <td>
+            <ul>
+              <li>Scalable Vector Graphics</li>
+              <li>Maintains quality at any size</li>
+              <li>Text-based format (can be edited with text editor)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>WebP (.webp)</td>
+          <td>Web images, modern browsers</td>
+          <td>
+            <ul>
+              <li>Better compression than JPEG and PNG</li>
+              <li>Supports both lossy and lossless compression</li>
+              <li>Supports animation and transparency</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      
+      <h2>Responsive Images</h2>
+      <div class="image-example">
+        <h3>Different sizes for different screens</h3>
+        <img 
+          srcset="https://placehold.co/400 400w, 
+                 https://placehold.co/800 800w, 
+                 https://placehold.co/1200 1200w"
+          sizes="(max-width: 600px) 400px, 
+                 (max-width: 1200px) 800px, 
+                 1200px"
+          src="https://placehold.co/800" 
+          alt="Responsive image example"
+        />
+        
+        <h3>Different resolutions (for retina displays)</h3>
+        <img 
+          srcset="https://placehold.co/300 1x, 
+                 https://placehold.co/600 2x" 
+          src="https://placehold.co/300" 
+          alt="High-DPI image example"
+        />
+      </div>
+      
+      <h2>Images as Links</h2>
+      <div class="image-example">
+        <a href="https://www.example.com">
+          <img src="https://placehold.co/200x50?text=Visit+Example.com" alt="Visit Example.com" />
+        </a>
+        <p>Click the image above to visit Example.com</p>
+      </div>
+      
+      <h2>Figure and Figcaption</h2>
+      <div class="image-example">
+        <figure>
+          <img src="https://placehold.co/400x300" alt="Sample figure image" />
+          <figcaption>Figure 1: This is a caption for the image above.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </body>
+</html> 

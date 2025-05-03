@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Links</title>
+  </head>
+  <body>
+    <h1>Links in HTML</h1>
+    
+    <h2>Basic Link Structure</h2>
+    <p><a href="destination.html">Link Text</a></p>
+    <p>The <code>a</code> stands for "anchor" and the <code>href</code> attribute specifies the destination.</p>
+    
+    <h2>Types of Links</h2>
+    
+    <h3>Relative Links (within your site)</h3>
+    <ul>
+      <li><a href="about.html">About Us</a> - Links to a file in the same directory</li>
+      <li><a href="products/item.html">View Product</a> - Links to a file in a subdirectory</li>
+      <li><a href="../index.html">Home</a> - Links to a file in the parent directory</li>
+    </ul>
+    
+    <h3>Absolute Links (to other websites)</h3>
+    <ul>
+      <li><a href="https://www.example.com">Visit Example.com</a> - External website</li>
+      <li><a href="https://developer.mozilla.org">MDN Web Docs</a> - Mozilla Developer Network</li>
+    </ul>
+    
+    <h3>Link Targets</h3>
+    <ul>
+      <li><a href="https://www.example.com" target="_blank">Example.com (new tab)</a> - Opens in a new tab/window</li>
+      <li><a href="page.html" target="_self">Same frame</a> - Default behavior</li>
+      <li><a href="page.html" target="_parent">Parent frame</a> - For use with frames/iframes</li>
+      <li><a href="page.html" target="_top">Full window</a> - For use with frames/iframes</li>
+    </ul>
+    
+    <h3>Email Links</h3>
+    <ul>
+      <li><a href="mailto:contact@example.com">Send Email</a> - Basic email link</li>
+      <li>
+        <a href="mailto:contact@example.com?subject=Website%20Inquiry&body=Hello%2C%20I%20have%20a%20question.">
+          Contact with Pre-filled Subject and Body
+        </a>
+      </li>
+    </ul>
+    
+    <h3>Media Links</h3>
+    <ul>
+      <li><a href="files/document.pdf">Download PDF</a></li>
+      <li><a href="files/image.jpg">View Image</a></li>
+      <li><a href="files/example.zip">Download ZIP</a></li>
+    </ul>
+    
+    <h2 id="section1">Section Navigation Example</h2>
+    <p>This is section 1 that can be linked to using an anchor.</p>
+    
+    <h3>Links to Page Sections</h3>
+    <ul>
+      <li><a href="#section1">Go to Section 1</a> - Links to a section on the same page</li>
+      <li><a href="page.html#section2">Go to Section 2 on another page</a> - Links to a section on another page</li>
+    </ul>
+    
+    <h3>Additional Link Attributes</h3>
+    <ul>
+      <li><a href="https://www.example.com" title="Visit Example.com for more information">Hover over me</a> - Shows a tooltip when hovering</li>
+      <li><a href="https://www.example.com" rel="nofollow">Example with rel attribute</a> - Tells search engines not to follow this link</li>
+      <li><a href="https://www.example.com" download>Download this page</a> - Suggests downloading rather than navigating</li>
+    </ul>
+  </body>
+</html> 
