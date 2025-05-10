@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Basic Box Model Example */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            margin: 20px;
+            padding: 20px;
+            border: 5px solid #2980b9;
+        }
+
+        /* Margin Examples */
+        .margin-example {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            margin: 20px;
+            border: 2px solid #c0392b;
+        }
+
+        .margin-different {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px;
+            margin: 20px 40px 20px 40px; /* top right bottom left */
+            border: 2px solid #27ae60;
+        }
+
+        /* Padding Examples */
+        .padding-example {
+            background-color: #9b59b6;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #8e44ad;
+        }
+
+        .padding-different {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            margin: 20px;
+            padding: 20px 40px 20px 40px; /* top right bottom left */
+            border: 2px solid #f39c12;
+        }
+
+        /* Border Examples */
+        .border-example {
+            background-color: #1abc9c;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border: 5px solid #16a085;
+            border-radius: 10px;
+        }
+
+        .border-styles {
+            background-color: #34495e;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border-width: 5px;
+            border-style: dashed;
+            border-color: #2c3e50;
+        }
+
+        /* Box Sizing Example */
+        .box-sizing-example {
+            width: 200px;
+            height: 200px;
+            background-color: #e67e22;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border: 5px solid #d35400;
+            box-sizing: border-box;
+        }
+
+        /* Visual Guide */
+        .box-model-guide {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #333;
+        }
+
+        .box-model-guide h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .box-model-guide p {
+            margin-bottom: 10px;
+        }
+
+        .box-model-guide code {
+            background-color: #f8f9fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Box Model Examples</h1>
+
+        <div class="box-model-guide">
+            <h2>Box Model Components</h2>
+            <p>The box model consists of:</p>
+            <ul>
+                <li><code>content</code>: The actual content of the box</li>
+                <li><code>padding</code>: Space between content and border</li>
+                <li><code>border</code>: The border around the padding</li>
+                <li><code>margin</code>: Space outside the border</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            Basic Box Model Example
+        </div>
+
+        <div class="margin-example">
+            Margin Example (20px all sides)
+        </div>
+
+        <div class="margin-different">
+            Different Margins (20px top/bottom, 40px left/right)
+        </div>
+
+        <div class="padding-example">
+            Padding Example (20px all sides)
+        </div>
+
+        <div class="padding-different">
+            Different Padding (20px top/bottom, 40px left/right)
+        </div>
+
+        <div class="border-example">
+            Border Example with Border Radius
+        </div>
+
+        <div class="border-styles">
+            Border with Different Style (dashed)
+        </div>
+
+        <div class="box-sizing-example">
+            Box Sizing: Border Box
+            <br>
+            (Total width includes padding and border)
+        </div>
+    </div>
+</body>
+</html> 

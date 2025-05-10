@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors and Specificity</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        /* 1. Element Selectors */
+        p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* 2. Class Selectors */
+        .highlight {
+            background-color: #ffeaa7;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        /* 3. ID Selectors */
+        #special-paragraph {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 4. Attribute Selectors */
+        input[type="text"] {
+            border: 2px solid #3498db;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        /* 5. Descendant Selectors */
+        .container p {
+            border-left: 3px solid #2ecc71;
+            padding-left: 10px;
+        }
+
+        /* 6. Child Selectors */
+        .list > li {
+            color: #9b59b6;
+            margin-bottom: 5px;
+        }
+
+        /* 7. Adjacent Sibling Selectors */
+        h2 + p {
+            font-style: italic;
+            color: #e67e22;
+        }
+
+        /* 8. General Sibling Selectors */
+        h2 ~ p {
+            background-color: #f8f9fa;
+            padding: 5px;
+        }
+
+        /* 9. Pseudo-class Selectors */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        /* 10. Pseudo-element Selectors */
+        .fancy-text::first-letter {
+            font-size: 2em;
+            color: #e74c3c;
+        }
+
+        /* Specificity Examples */
+        .specificity-example {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        /* This will win due to higher specificity */
+        .specificity-example p.special {
+            color: #e74c3c;
+        }
+
+        /* This will lose due to lower specificity */
+        .specificity-example p {
+            color: #3498db;
+        }
+
+        /* This will win due to !important */
+        .important-example {
+            color: #2ecc71 !important;
+        }
+
+        /* This will lose despite higher specificity */
+        .important-example.special {
+            color: #e74c3c;
+        }
+
+        /* Multiple Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-bold {
+            font-weight: bold;
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Selectors and Specificity</h1>
+
+        <section class="specificity-example">
+            <h2>Basic Selectors</h2>
+            <p>This is a regular paragraph (element selector)</p>
+            <p class="highlight">This paragraph has a highlight class</p>
+            <p id="special-paragraph">This paragraph has an ID</p>
+            <input type="text" placeholder="Text input with attribute selector">
+            <input type="email" placeholder="Email input (no special styling)">
+        </section>
+
+        <section>
+            <h2>Combinator Selectors</h2>
+            <p>This paragraph is styled by descendant selector</p>
+            <ul class="list">
+                <li>First item (child selector)</li>
+                <li>Second item (child selector)</li>
+                <li>
+                    <ul>
+                        <li>Nested item (not affected by child selector)</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Adjacent and General Sibling Selectors</h2>
+            <p>This paragraph is after h2 (adjacent sibling)</p>
+            <p>This paragraph is also after h2 (general sibling)</p>
+            <div>This div breaks the sibling chain</div>
+            <p>This paragraph is not a sibling of h2</p>
+        </section>
+
+        <section>
+            <h2>Pseudo-classes and Pseudo-elements</h2>
+            <a href="#" class="button">Hover me!</a>
+            <p class="fancy-text">This text has a fancy first letter</p>
+        </section>
+
+        <section class="specificity-example">
+            <h2>Specificity Examples</h2>
+            <p>This paragraph is blue (element selector)</p>
+            <p class="special">This paragraph is red (class selector wins)</p>
+            <p class="important-example special">This text is green (!important wins)</p>
+        </section>
+
+        <section>
+            <h2>Multiple Classes</h2>
+            <p class="text-center text-bold text-uppercase">
+                This text is centered, bold, and uppercase
+            </p>
+        </section>
+
+        <section class="specificity-guide">
+            <h2>Specificity Rules</h2>
+            <ol>
+                <li>Inline styles (1000 points)</li>
+                <li>IDs (100 points)</li>
+                <li>Classes, attributes, and pseudo-classes (10 points)</li>
+                <li>Elements and pseudo-elements (1 point)</li>
+            </ol>
+            <p class="highlight">Note: !important overrides all specificity rules</p>
+        </section>
+    </div>
+</body>
+</html> 
