@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Semantic Elements</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Using different colors to distinguish semantic elements */
+        .page-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+        }
+
+        .page-header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #1a252f;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-areas:
+                "header header header"
+                "navigation main sidebar"
+                "footer footer footer";
+            gap: 1rem;
+        }
+
+        main {
+            grid-area: main;
+            background-color: white;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        aside {
+            grid-area: sidebar;
+            background-color: #e74c3c;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        article {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        article header {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        figure {
+            margin: 1rem 0;
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        figcaption {
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .element-name {
+            color: #e74c3c;
+            background-color: #f9f9f9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "navigation"
+                    "main"
+                    "sidebar"
+                    "footer";
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>HTML5 Semantic Elements</h1>
+        <p>Understanding the proper use of structural elements in HTML5</p>
+    </header>
+
+    <!-- Primary Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#header">Header</a></li>
+            <li><a href="#nav">Nav</a></li>
+            <li><a href="#main">Main</a></li>
+            <li><a href="#section">Section</a></li>
+            <li><a href="#article">Article</a></li>
+            <li><a href="#aside">Aside</a></li>
+            <li><a href="#figure">Figure</a></li>
+            <li><a href="#footer">Footer</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section id="introduction">
+                <h2>Why Use Semantic HTML?</h2>
+                <p>Semantic HTML elements clearly describe their meaning to both the browser and the developer. Benefits include:</p>
+                <ul>
+                    <li>Better accessibility for screen readers and assistive technologies</li>
+                    <li>Improved SEO as search engines understand your content better</li>
+                    <li>More maintainable code with clearer structure</li>
+                    <li>Easier styling with CSS</li>
+                </ul>
+            </section>
+
+            <section id="header">
+                <h2><span class="element-name">&lt;header&gt;</span> Element</h2>
+                <p>The header element represents introductory content for its nearest ancestor sectioning content or sectioning root element.</p>
+                
+                <article>
+                    <header>
+                        <h3>Example Usage</h3>
+                        <p>This is a header within an article. Headers can be used in articles, sections, or for the page itself.</p>
+                    </header>
+                    <p>A header typically contains:</p>
+                    <ul>
+                        <li>One or more heading elements (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>)</li>
+                        <li>Logo or icon</li>
+                        <li>Authorship information</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="nav">
+                <h2><span class="element-name">&lt;nav&gt;</span> Element</h2>
+                <p>The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.</p>
+                
+                <article>
+                    <p>Common examples of navigation sections are:</p>
+                    <ul>
+                        <li>Menus</li>
+                        <li>Tables of contents</li>
+                        <li>Indexes</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="main">
+                <h2><span class="element-name">&lt;main&gt;</span> Element</h2>
+                <p>The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document.</p>
+                
+                <article>
+                    <p>Important notes about <code>&lt;main&gt;</code>:</p>
+                    <ul>
+                        <li>There should be only one <code>&lt;main&gt;</code> element in a document</li>
+                        <li>It should not be a descendant of <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;nav&gt;</code></li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="section">
+                <h2><span class="element-name">&lt;section&gt;</span> Element</h2>
+                <p>The section element represents a generic section of a document or application. A section, in this context, is a thematic grouping of content, typically with a heading.</p>
+                
+                <article>
+                    <p>Use <code>&lt;section&gt;</code> when:</p>
+                    <ul>
+                        <li>The content can be naturally grouped under a heading</li>
+                        <li>You'd list the section in a document outline or table of contents</li>
+                        <li>The content represents a thematic grouping</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="article">
+                <h2><span class="element-name">&lt;article&gt;</span> Element</h2>
+                <p>The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.</p>
+                
+                <article>
+                    <header>
+                        <h3>This is an Article Example</h3>
+                        <p>Published on <time datetime="2023-05-15">May 15, 2023</time> by John Doe</p>
+                    </header>
+                    <p>Articles are commonly used for:</p>
+                    <ul>
+                        <li>Forum posts</li>
+                        <li>Blog posts</li>
+                        <li>News stories</li>
+                        <li>User comments</li>
+                        <li>Product cards</li>
+                    </ul>
+                    <p>An article should make sense on its own, even if removed from the rest of the site.</p>
+                </article>
+            </section>
+
+            <section id="aside">
+                <h2><span class="element-name">&lt;aside&gt;</span> Element</h2>
+                <p>The aside element represents a section of a page that consists of content that is tangentially related to the content around it, which could be considered separate from that content.</p>
+                
+                <article>
+                    <p>Common uses of <code>&lt;aside&gt;</code>:</p>
+                    <ul>
+                        <li>Sidebars</li>
+                        <li>Pull quotes</li>
+                        <li>Advertising</li>
+                        <li>Related article links</li>
+                        <li>Author bios</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="figure">
+                <h2><span class="element-name">&lt;figure&gt;</span> and <span class="element-name">&lt;figcaption&gt;</span> Elements</h2>
+                <p>The figure element represents self-contained content, potentially with an optional caption, that is referenced from the main content.</p>
+                
+                <figure>
+                    <div style="background-color: #3498db; height: 150px; border-radius: 5px; display: flex; justify-content: center; align-items: center; color: white;">
+                        [Image placeholder]
+                    </div>
+                    <figcaption>Fig.1 - This is a figure caption that describes the content above.</figcaption>
+                </figure>
+                
+                <article>
+                    <p>Figures are often used for:</p>
+                    <ul>
+                        <li>Images with captions</li>
+                        <li>Charts and graphs</li>
+                        <li>Code snippets</li>
+                        <li>Quotations</li>
+                        <li>Diagrams</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="footer">
+                <h2><span class="element-name">&lt;footer&gt;</span> Element</h2>
+                <p>The footer element represents a footer for its nearest ancestor sectioning content or sectioning root element.</p>
+                
+                <article>
+                    <p>Footer typically contains:</p>
+                    <ul>
+                        <li>Authorship information</li>
+                        <li>Copyright information</li>
+                        <li>Contact information</li>
+                        <li>Sitemap</li>
+                        <li>Back to top links</li>
+                        <li>Related documents</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+        <aside>
+            <h2>Related Resources</h2>
+            <ul>
+                <li><a href="#">HTML5 Doctor</a></li>
+                <li><a href="#">MDN Web Docs</a></li>
+                <li><a href="#">W3C HTML5 Specification</a></li>
+                <li><a href="#">Web Accessibility Initiative</a></li>
+            </ul>
+
+            <h3>Additional Elements</h3>
+            <ul>
+                <li><span class="element-name">&lt;time&gt;</span> - For dates and times</li>
+                <li><span class="element-name">&lt;mark&gt;</span> - For highlighted text</li>
+                <li><span class="element-name">&lt;details&gt;</span> - For additional details</li>
+                <li><span class="element-name">&lt;summary&gt;</span> - For details heading</li>
+                <li><span class="element-name">&lt;hgroup&gt;</span> - For heading groups</li>
+            </ul>
+        </aside>
+
+        <footer>
+            <p>&copy; 2023 HTML5 Semantic Example</p>
+            <p>This example demonstrates proper use of HTML5 semantic elements.</p>
+        </footer>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Daily News - Semantic Newspaper Layout</title>
+    <style>
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Georgia", serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Layout wrapper */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Times New Roman", serif;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Masthead */
+        .masthead {
+            padding: 1rem 0;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        .masthead h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .masthead p {
+            font-style: italic;
+        }
+
+        .masthead time {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Navigation - using flexbox */
+        nav {
+            background-color: #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #333;
+        }
+
+        /* Main content area - using CSS Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Articles section */
+        .articles-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1.5rem;
+        }
+
+        /* Individual article */
+        article {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        article.featured {
+            grid-column: span 3;
+        }
+
+        article header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        article h2 {
+            font-size: 1.5rem;
+        }
+
+        article h3 {
+            font-size: 1.2rem;
+        }
+
+        .byline {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Figure and caption */
+        figure {
+            margin: 1rem 0;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        figcaption {
+            padding: 0.5rem;
+            background-color: #f5f5f5;
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Article content with columns */
+        .article-content {
+            column-count: 2;
+            column-gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.2rem;
+            font-weight: bold;
+        }
+
+        /* Sidebar */
+        aside {
+            background-color: #f0f0f0;
+            padding: 1rem;
+        }
+
+        aside h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .trending-list {
+            list-style: none;
+        }
+
+        .trending-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .trending-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .trending-list a:hover {
+            color: #888;
+        }
+
+        /* Media embed */
+        .media-embed {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+        }
+
+        .media-embed h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Related stories */
+        .related-stories {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .related-stories h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .related-stories ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .articles-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            article.featured {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-section {
+                grid-template-columns: 1fr;
+            }
+            
+            article.featured {
+                grid-column: span 1;
+            }
+
+            .article-content {
+                column-count: 1;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav li {
+                margin: 0.2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <div class="container">
+            <h1>The Daily News</h1>
+            <p>Your trusted source for the latest information</p>
+            <time datetime="2023-07-15">Saturday, July 15, 2023</time>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#politics">Politics</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#sports">Sports</a></li>
+                <li><a href="#entertainment">Entertainment</a></li>
+                <li><a href="#health">Health</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="articles-section">
+                <article class="featured">
+                    <header>
+                        <h2>Major Breakthrough in Renewable Energy Technology</h2>
+                        <p class="byline">By <a href="#">Sarah Johnson</a> | Technology Editor</p>
+                        <time datetime="2023-07-15T09:30">Published: July 15, 2023, 9:30 AM</time>
+                    </header>
+
+                    <figure>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23adb5bd'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' fill='%23495057' dominant-baseline='middle'%3ESolar panels and wind turbines%3C/text%3E%3C/svg%3E" alt="Solar panels and wind turbines" />
+                        <figcaption>New solar technology combined with advanced wind turbines is revolutionizing the energy sector.</figcaption>
+                    </figure>
+
+                    <div class="article-content">
+                        <p>Scientists have announced a major breakthrough in renewable energy technology that could significantly reduce the cost of clean energy production and accelerate the transition away from fossil fuels.</p>
+                        
+                        <p>The new technology, developed by a team of researchers at the National Renewable Energy Laboratory, combines advanced solar cells with innovative energy storage solutions to overcome one of the biggest challenges facing renewable energy: intermittency.</p>
+                        
+                        <p>"This represents a quantum leap forward," said Dr. Lisa Chen, the lead researcher on the project. "Our system achieves nearly 40% greater efficiency than current technologies while reducing manufacturing costs by almost 25%."</p>
+                        
+                        <p>Industry experts are calling this development a potential game-changer in the fight against climate change. The technology has already attracted significant interest from major energy companies and governments around the world.</p>
+                    </div>
+                    
+                    <div class="related-stories">
+                        <h4>Related Stories</h4>
+                        <ul>
+                            <li><a href="#">Global Investments in Green Technology Reach Record High</a></li>
+                            <li><a href="#">How Renewable Energy is Reshaping Global Politics</a></li>
+                            <li><a href="#">The Race to Zero Emissions: Countries Leading the Way</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article>
+                    <header>
+                        <h3>Local Community Embraces Urban Farming</h3>
+                        <p class="byline">By <a href="#">Michael Torres</a></p>
+                        <time datetime="2023-07-15T10:15">July 15, 2023</time>
+                    </header>
+                    
+                    <figure>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23adb5bd'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='18' text-anchor='middle' fill='%23495057' dominant-baseline='middle'%3EUrban garden on a rooftop%3C/text%3E%3C/svg%3E" alt="Urban garden on a rooftop" />
+                        <figcaption>Downtown rooftop gardens are producing fresh vegetables for local residents.</figcaption>
+                    </figure>
+                    
+                    <p>A community in the heart of the city has transformed vacant lots and rooftops into thriving urban farms, providing fresh produce to local residents and restaurants.</p>
+                    
+                    <p>The initiative, which began three years ago with just five participants, now involves over 200 community members and has produced more than 5,000 pounds of fresh vegetables in the last year alone.</p>
+                </article>
+
+                <article>
+                    <header>
+                        <h3>New Study Reveals Benefits of Regular Exercise</h3>
+                        <p class="byline">By <a href="#">Jennifer Williams</a></p>
+                        <time datetime="2023-07-14T16:45">July 14, 2023</time>
+                    </header>
+                    
+                    <p>A groundbreaking study published in the Journal of Health Sciences has revealed that even short periods of regular exercise can have significant health benefits.</p>
+                    
+                    <p>The research, which followed 5,000 participants over a period of ten years, found that just 15 minutes of moderate exercise daily can reduce the risk of heart disease by up to 30%.</p>
+                    
+                    <p>Experts recommend these simple activities to incorporate into your daily routine:</p>
+                    <ul>
+                        <li>Brisk walking during lunch breaks</li>
+                        <li>Taking stairs instead of elevators</li>
+                        <li>Short stretching sessions every hour while working</li>
+                        <li>Weekend recreational activities like hiking or swimming</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <header>
+                        <h3>Tech Innovation Summit Draws Global Attention</h3>
+                        <p class="byline">By <a href="#">David Chen</a></p>
+                        <time datetime="2023-07-14T14:20">July 14, 2023</time>
+                    </header>
+                    
+                    <div class="media-embed">
+                        <h3>Summit Highlights</h3>
+                        <div style="background-color: #adb5bd; height: 350px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                            <div style="text-align: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#495057" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                                </svg>
+                                <p style="margin-top: 10px; color: #495057;">Video Player</p>
+                            </div>
+                        </div>
+                        <p><small>Watch key moments from the Technology Innovation Summit.</small></p>
+                    </div>
+                    
+                    <p>The annual Technology Innovation Summit has drawn record attendance this year, with representatives from over 50 countries participating in the three-day event.</p>
+                    
+                    <p>Keynote speakers included leaders from major tech companies and promising startups, who shared insights on artificial intelligence, quantum computing, and sustainable technology solutions.</p>
+                </article>
+            </section>
+
+            <aside>
+                <h2>Trending News</h2>
+                <ul class="trending-list">
+                    <li><a href="#">Stock Market Reaches All-Time High Amid Economic Recovery</a></li>
+                    <li><a href="#">New Film Breaks Box Office Records on Opening Weekend</a></li>
+                    <li><a href="#">Scientists Discover Potential New Treatment for Alzheimer's</a></li>
+                    <li><a href="#">Global Leaders Agree on Climate Action Framework</a></li>
+                    <li><a href="#">Sports Championship Finals Set for Dramatic Conclusion</a></li>
+                </ul>
+                
+                <h2>Weather Update</h2>
+                <p>Today: Partly cloudy, 75°F</p>
+                <p>Tomorrow: Sunny, 82°F</p>
+                <p>Monday: Scattered showers, 71°F</p>
+                
+                <h2>Market Watch</h2>
+                <p>DOW: <span style="color: green;">▲ 245.32</span></p>
+                <p>NASDAQ: <span style="color: green;">▲ 127.84</span></p>
+                <p>S&P 500: <span style="color: red;">▼ 32.12</span></p>
+            </aside>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 The Daily News. All rights reserved.</p>
+            <p>This is a demonstration of HTML5 semantic elements and CSS layout techniques.</p>
+        </div>
+    </footer>
+</body>
+</html> 
