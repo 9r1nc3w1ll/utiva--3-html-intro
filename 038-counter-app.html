@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOP Counter App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    .counter {
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .display {
+      font-size: 3rem;
+      margin: 20px 0;
+    }
+    button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button.reset {
+      background-color: #f44336;
+    }
+    button.reset:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter" id="app">
+    <h1>OOP Counter</h1>
+    <div class="display" id="count">0</div>
+    <div>
+      <button id="decrement">-</button>
+      <button id="increment">+</button>
+      <button id="reset" class="reset">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    // Counter class - Demonstrates encapsulation and abstraction
+    class Counter {
+      // Private variable with closure
+      #count = 0;
+      #displayElement;
+      
+      constructor(displayElement) {
+        this.#displayElement = displayElement;
+        this.updateDisplay();
+      }
+      
+      // Public methods that provide interface to private data
+      increment() {
+        this.#count++;
+        this.updateDisplay();
+      }
+      
+      decrement() {
+        this.#count--;
+        this.updateDisplay();
+      }
+      
+      reset() {
+        this.#count = 0;
+        this.updateDisplay();
+      }
+      
+      // Private method to update display
+      updateDisplay() {
+        this.#displayElement.textContent = this.#count;
+      }
+    }
+    
+    // CounterApp class - Demonstrates abstraction and single responsibility
+    class CounterApp {
+      #counter;
+      
+      constructor() {
+        const displayElement = document.getElementById('count');
+        this.#counter = new Counter(displayElement);
+        
+        // Connect UI events to counter methods
+        document.getElementById('increment').addEventListener('click', 
+          () => this.#counter.increment());
+        
+        document.getElementById('decrement').addEventListener('click', 
+          () => this.#counter.decrement());
+        
+        document.getElementById('reset').addEventListener('click', 
+          () => this.#counter.reset());
+      }
+    }
+    
+    // Initialize the app when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new CounterApp();
+    });
+  </script>
+</body>
+</html> 
